@@ -49,7 +49,7 @@ export default function Chat() {
   }, []);
 
   const onValidateOpenaiAPI = (e) => {
-    if (e.target.value.match(/^sk-[a-zA-Z0-9]{32,}$/)) {
+    if (e.target.value.match(/^sk-proj-[a-zA-Z0-9]+$/)) {
       setOpenaiKey(e.target.value);
     } else {
       setOpenaiKey("");
@@ -57,7 +57,7 @@ export default function Chat() {
   };
 
   const onSaveOpenaiKey = () => {
-    if (!openaiKey) return toast.error("Invalid Openai key");
+    // if (!openaiKey) return toast.error("Invalid Openai key");
     const encryptedApiKey = encryptData(openaiKey);
     localStorage.setItem("icp-dai-open-ai", encryptedApiKey);
     toast.success("Openai key successfully saved and crypted");
